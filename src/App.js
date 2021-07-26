@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './App.css';
-import DnaLoadingSkeleton from './components/DnaLoadingSkeleton';
+import Loading from './components/Loading';
 
 function App() {
+
+
   return (
     <div className="App">
-      <DnaLoadingSkeleton />
+      <Loading />
     </div>
   );
 }
