@@ -4,3 +4,7 @@ export default async function getSequence(id = 0) {
     .then(resp => resp.json())
   return data
 }
+
+export async function saveSequence() {
+
+}
