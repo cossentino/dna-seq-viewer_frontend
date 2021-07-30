@@ -1,8 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Header from '../components/Header'
+import { generateSequence } from '../services/sequence_format'
 
 const Home = () => {
+
+  const seq = generateSequence('AACCGTG')
 
   return (
     <div>
@@ -18,6 +21,9 @@ const Home = () => {
           View Existing Sequences
         </button>
       </Link>
+      {seq}
+
+
     </div>
   )
 }
