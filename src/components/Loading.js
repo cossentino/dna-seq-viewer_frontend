@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import helix from '../images/helix.svg'
-import getSequence from '../services/api/api_requests'
-import { generateBase, generateComplementaryBase } from '../services/sequence_format'
 
 const Loading = () => {
   return (
@@ -10,6 +8,5 @@ const Loading = () => {
     </div>
   )
 }
-
 
 export default Loading

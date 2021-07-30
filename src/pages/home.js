@@ -1,19 +1,24 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import Header from '../components/Header'
 
 const Home = () => {
 
-
-
-
-
-
-
-
-
-
-
   return (
-    <div>I am the home page</div>
+    <div>
+      <Header />
+      <p>Welcome. What would you like to do?</p>
+      <Link to="/upload">
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          Upload Sequence
+        </button>
+      </Link>
+      <Link to="/sequences">
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          View Existing Sequences
+        </button>
+      </Link>
+    </div>
   )
 }
 
