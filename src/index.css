@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .min-h-50 {
+    min-height: 50vh;
+  }
+
+  .min-w-50 {
+    min-width: 50vw;
+  }
+}
