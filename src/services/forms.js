@@ -1,3 +1,8 @@
+import Cookies from 'js-cookie'
+export const ADD_SEQUENCE_URL = 'http://localhost:8000/sequences/new'
+
+export const csrftoken = Cookies.get('csrftoken');
+
 export const postConfObj = body => {
   return {
     method: "POST",

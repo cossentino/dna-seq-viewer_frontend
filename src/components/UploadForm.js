@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react'
-import { postConfObj } from '../services/forms'
+import { postConfObj, ADD_SEQUENCE_URL, csrftoken } from '../services/forms'
 
 const UploadForm = () => {
 
@@ -18,7 +18,8 @@ const UploadForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    fetch('http://localhost:3000/sequences', postConfObj(formData))
+    const request = new Request(ADD_SEQUENCE_URL, { headers: { 'X-CSRFToken': csrftoken } })
+    fetch(request, postConfObj(formData))
       .catch(error => console.log(error))
   }
 
