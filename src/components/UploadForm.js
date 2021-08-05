@@ -4,7 +4,7 @@ import { postConfObj, ADD_SEQUENCE_URL, csrftoken } from '../services/forms'
 const UploadForm = () => {
 
   const myFileInput = useRef()
-  const [formData, setFormData] = useState({ description: "", name: "", sequenceType: "1", rawText: "" })
+  const [formData, setFormData] = useState({ description: "", name: "", sequence_type: "1", raw_sequence: "" })
 
   const handleChange = e => {
     const { name, value } = e.target
@@ -13,7 +13,7 @@ const UploadForm = () => {
 
   const handleFileUpload = e => {
     e.preventDefault()
-    myFileInput.current.files[0].text().then(rawText => setFormData({ ...formData, rawText: rawText }))
+    myFileInput.current.files[0].text().then(raw_sequence => setFormData({ ...formData, raw_sequence: raw_sequence }))
   }
 
   const handleSubmit = async (e) => {
