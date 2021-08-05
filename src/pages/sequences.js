@@ -1,26 +1,20 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Header from '../components/Header'
+import { useSequences } from '../services/api/api_requests'
 
 
 const SequencesPage = () => {
-
-  const [sequences, setSequences] = useState([])
-
-  useEffect(() => {
-    async function getSequences() {
-      return await fetch('sequencesurl').then(resp => resp.json())
-    }
-    const sequences = getSequences()
-    setSequences(sequences)
-  })
-
-
-  return (
-    <div>
-      <Header />
-
-    </div>
-  )
+  const sequences = useSequences()
+  if (sequences === null) {
+    return "waiting"
+  } else {
+    return (
+      <div>
+        <Header />
+        {sequences.map(s => <span key={s.id}>{s.raw_sequence}{s.name}{s.description}</span>)}
+      </div>
+    )
+  }
 
 }
 

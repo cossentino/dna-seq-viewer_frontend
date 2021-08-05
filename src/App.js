@@ -3,7 +3,6 @@ import './App.css';
 import Loading from './components/Loading';
 import Upload from './pages/upload'
 import Home from './pages/home'
-import Sequences from './pages/sequences'
 import { Route, Switch } from 'react-router-dom'
 import SequencesPage from './pages/sequences';
 
