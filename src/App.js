@@ -6,6 +6,8 @@ import Home from './pages/home'
 import { Route, Switch } from 'react-router-dom'
 import SequencesPage from './pages/sequences';
 
+
+
 function App() {
 
   const [loading, setLoading] = useState(true)
@@ -15,7 +17,7 @@ function App() {
     <div className="App">
       <Switch>
         <Route path="/about">
-          This is text where the about page should go
+          This is the about page
         </Route>
         <Route path="/sequences">
           <SequencesPage />
