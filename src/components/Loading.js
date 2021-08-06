@@ -1,5 +1,5 @@
 import React from 'react'
-import helix from '../images/helix.svg'
+import helix from '../images/icons/helix.svg'
 
 const Loading = () => {
   return (

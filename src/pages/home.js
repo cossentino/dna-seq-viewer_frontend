@@ -2,9 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Header from '../components/Header'
 import { generateSequence } from '../services/sequence_format'
-import helix from '../images/helix.svg'
-import peptide from '../images/peptide.svg'
-import upload from '../images/upload.svg'
+import helix from '../images/icons/helix.svg'
+import peptide from '../images/icons/peptide.svg'
+import upload from '../images/icons/upload.svg'
 
 const Home = () => {
 
