@@ -6,8 +6,6 @@ import Home from './pages/home'
 import { Route, Switch } from 'react-router-dom'
 import SequencesPage from './pages/sequences';
 
-
-
 function App() {
 
   const [loading, setLoading] = useState(true)

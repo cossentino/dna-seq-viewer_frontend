@@ -7,18 +7,17 @@ export default async function getSequence(id = 0) {
 }
 
 export function useSequences() {
-
+  // Initialize state to hold results from fetch call
   const [sequences, setSequences] = useState([])
 
+  // Fetch sequences from API and save them in state
   useEffect(() => {
     async function getSequences() {
       const response = await fetch('http://localhost:8000/sequences').then(resp => resp.json())
       setSequences(response.data)
     }
     getSequences()
+    // As of right now, there are no dependencies on which use effect should fire again
   }, [])
   return sequences
-}
-
-export async function saveSequence() {
 }

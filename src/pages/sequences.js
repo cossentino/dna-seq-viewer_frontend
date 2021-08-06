@@ -2,6 +2,7 @@ import React from 'react'
 import Header from '../components/Header'
 import { useSequences } from '../services/api/api_requests'
 import { Link } from 'react-router-dom'
+import { generateSequence } from '../services/sequence_format'
 
 export default function SequencesPage() {
   const sequences = useSequences()
@@ -34,6 +35,9 @@ export default function SequencesPage() {
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="text-sm text-gray-900">{s.description}</div>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <div className="text-sm text-gray-900">{generateSequence(s.raw_sequence)}</div>
                         </td>
                       </tr>))}
                   </tbody>

@@ -4,7 +4,7 @@ import { postConfObj, ADD_SEQUENCE_URL, csrftoken } from '../services/forms'
 const UploadForm = () => {
 
   const myFileInput = useRef()
-  const [formData, setFormData] = useState({ description: "", name: "", sequence_type: "1", raw_sequence: "" })
+  const [formData, setFormData] = useState({ description: "", name: "", raw_sequence: "" })
 
   const handleChange = e => {
     const { name, value } = e.target
@@ -13,6 +13,7 @@ const UploadForm = () => {
 
   const handleFileUpload = e => {
     e.preventDefault()
+    debugger
     myFileInput.current.files[0].text().then(raw_sequence => setFormData({ ...formData, raw_sequence: raw_sequence }))
   }
 
@@ -37,14 +38,6 @@ const UploadForm = () => {
         Upload FASTA file:
       </label>
       <input type="file" ref={myFileInput} onChange={handleFileUpload} size="400" className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded my-2 py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" />
-      <label className="block tracking-wide text-white text-sm font-bold">
-        DNA or Protein
-      </label>
-      <div className="flex justify-center m-2">
-        <input name="sequenceType" onChange={handleChange} type="radio" value="1" defaultChecked label="DNA" className="mx-4" />
-        <input name="sequenceType" onChange={handleChange} type="radio" value="0" label="Protein" className="mx-4" />
-      </div>
-
       <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold my-2 py-2 px-4 rounded">Submit</button>
     </form>
   )
