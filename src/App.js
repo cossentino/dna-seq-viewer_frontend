@@ -5,6 +5,7 @@ import Upload from './pages/upload'
 import Home from './pages/home'
 import { Route, Switch } from 'react-router-dom'
 import SequencesPage from './pages/sequences';
+import Base from './images/bases/base';
 
 function App() {
 
@@ -15,7 +16,7 @@ function App() {
     <div className="App">
       <Switch>
         <Route path="/about">
-          This is the about page
+          <Base color={'#E96C6C'} />
         </Route>
         <Route path="/sequences">
           <SequencesPage />
