@@ -17,6 +17,7 @@ export default function Header() {
             </h1>
           </div>
           <div className="text-gray-700 text-center flex items-center align-middle">
+            {localStorage.getItem('user')}
             <Link
               to={ROUTES.HOMEPAGE}
               aria-label="Dashboard"

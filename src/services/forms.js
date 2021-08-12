@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie'
 export const ADD_SEQUENCE_URL = 'http://localhost:8000/sequences/new'
-export const LOGIN_URL = 'http://localhost:8000/users/login/'
+export const LOGIN_URL = 'http://localhost:8000/api/users/login/'
 
 export const csrftoken = Cookies.get('csrftoken');
 
