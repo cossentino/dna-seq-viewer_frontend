@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
-import { postConfObj, LOGIN_URL, csrftoken } from '../../services/forms'
-
+import { postConfObj, LOGIN_URL } from '../../services/forms'
+import Cookies from 'js-cookie'
+import { useHistory, Redirect } from 'react-router-dom'
 
 
 const LoginForm = () => {
 
   const [formData, setFormData] = useState({ email: "", password: "" })
+  const [responded, setResponded] = useState(false)
 
   const handleChange = e => {
     const { name, value } = e.target
@@ -14,12 +16,18 @@ const LoginForm = () => {
 
   const handleSubmit = async e => {
     e.preventDefault()
-    const request = new Request(LOGIN_URL, { headers: { 'X-CSRFToken': csrftoken } })
-    fetch(request, postConfObj(formData))
+    const csrftoken = Cookies.get('csrftoken')
+    const headers = new Headers()
+    headers.append('X-CSRFToken', csrftoken)
+    fetch(LOGIN_URL, {
+      method: "POST",
+      body: JSON.stringify(formData),
+      headers: headers
+    }).then(() => setResponded(true))
       .catch(error => console.log(error))
   }
 
-  return (
+  return responded ? <Redirect to="/" /> : (
     <form onSubmit={e => handleSubmit(e)} className="p-6 flex flex-col justify-evenly">
 
       <div>
