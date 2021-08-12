@@ -3,6 +3,7 @@ import './App.css';
 import Loading from './components/Loading';
 import Upload from './pages/upload'
 import Home from './pages/home'
+import Login from './pages/login'
 import { Route, Switch } from 'react-router-dom'
 import SequencesPage from './pages/sequences';
 import Base from './images/bases/base';
@@ -23,6 +24,9 @@ function App() {
         </Route>
         <Route path="/upload">
           <Upload />
+        </Route>
+        <Route path="/login">
+          <Login />
         </Route>
         <Route path="/">
           {loading ? <Loading /> : <Home />}
