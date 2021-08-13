@@ -1,20 +1,17 @@
 import React, { useState } from 'react'
+import Loading from './Loading'
 
 
 
-const Sequence = ({ id }) => {
+const Sequence = ({ sequence }) => {
 
 
-  return (
-
+  return !sequence ? null : (
     <div>
-      This is a sequence with id of {id}.
+      This is a sequence with id of {sequence.id}.
+      Name: {sequence.name}
+      Created at: {sequence.created_at}
     </div>
-
-
-
-
-
   )
 
 
