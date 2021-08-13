@@ -15,7 +15,7 @@ export function useSequences() {
   useEffect(() => {
     async function getSequences() {
       const cookie = Cookies.get('token')
-      const response = await fetch('http://localhost:8000/sequences', { headers: { 'Token': cookie, 'Authorization': `Token ${cookie}` } }).then(resp => resp.json())
+      const response = await fetch('http://localhost:8000/sequences', { headers: { 'Authorization': `Token ${cookie}` } }).then(resp => resp.json())
       setSequences(response.data)
     }
     getSequences()

@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react'
-import { postConfObj, ADD_SEQUENCE_URL, csrftoken } from '../services/forms'
+import { ADD_SEQUENCE_URL } from '../services/forms'
 import Cookies from 'js-cookie'
 
 const UploadForm = () => {
@@ -21,11 +21,13 @@ const UploadForm = () => {
     e.preventDefault()
     const csrftoken = Cookies.get('csrftoken')
     const headers = new Headers()
-    // headers.append('X-CSRFToken', csrftoken)
+    headers.append('X-CSRFToken', csrftoken)
+    headers.append('Authorization', `Token ${Cookies.get('token')}`)
     fetch(ADD_SEQUENCE_URL, {
       method: "POST",
       body: JSON.stringify(formData),
-      headers: headers
+      headers: headers,
+      credentials: 'include'
     })
       .catch(error => console.log(error))
   }
