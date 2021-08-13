@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react'
-import { ADD_SEQUENCE_URL } from '../services/forms'
+import { ADD_SEQUENCE_URL } from '../../services/forms'
 import Cookies from 'js-cookie'
 
 const UploadForm = () => {

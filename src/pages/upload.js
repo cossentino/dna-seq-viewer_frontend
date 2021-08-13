@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from '../components/Header'
-import UploadForm from '../components/UploadForm'
+import UploadForm from '../components/forms/UploadForm'
 
 const Upload = () => {
 
