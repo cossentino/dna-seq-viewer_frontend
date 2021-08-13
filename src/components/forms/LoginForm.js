@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { postConfObj, LOGIN_URL } from '../../services/forms'
-import Cookies from 'js-cookie'
+import { LOGIN_URL } from '../../services/forms'
 import { Redirect } from 'react-router-dom'
+import Cookies from 'js-cookie'
 
 
 const LoginForm = () => {
@@ -16,21 +16,19 @@ const LoginForm = () => {
 
   const handleSubmit = async e => {
     e.preventDefault()
-    // const csrftoken = Cookies.get('csrftoken')
-    // const headers = new Headers()
-    // headers.append('X-CSRFToken', csrftoken)
     fetch(LOGIN_URL, {
       method: "POST",
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData),
-    }).then((resp) => {
-      console.log(resp)
-      setResponded(true)
-    })
+    }).then((resp) => resp.json())
+      .then(json => {
+        Cookies.set('token', json['user']['token'], { samesite: "strict" })
+      }).then(() => setResponded(true))
       .catch(error => console.log(error))
   }
 
-  return responded ? <Redirect to="/" /> : (
+  // return responded ? <Redirect to="/" /> : (
+  return (
     <form onSubmit={e => handleSubmit(e)} className="p-6 flex flex-col justify-evenly">
 
       <div>
