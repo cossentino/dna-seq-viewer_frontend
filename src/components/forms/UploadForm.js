@@ -5,11 +5,15 @@ import Cookies from 'js-cookie'
 const UploadForm = () => {
 
   const myFileInput = useRef()
-  const [formData, setFormData] = useState({ description: "", name: "", raw_sequence: "", sequence_type: 0 })
+  const [formData, setFormData] = useState({ sequence: { description: "", name: "", raw_sequence: "" }, sequence_type: "0" })
 
   const handleChange = e => {
     const { name, value } = e.target
-    setFormData({ ...formData, [name]: value })
+    if (formData[name]) {
+      setFormData({ ...formData, [name]: value })
+    } else {
+      setFormData({ ...formData, sequence: { ...formData.sequence, [name]: value } })
+    }
   }
 
   const handleFileUpload = e => {
@@ -47,9 +51,9 @@ const UploadForm = () => {
 
       <label className="text-white">
         DNA or Peptide?<br />
-        <select className="bg-gray-200 text-gray-900" value={formData.sequence_type} onChange={handleChange}>
-          <option value={0}>DNA</option>
-          <option value={1}>Peptide</option>
+        <select name="sequence_type" className="bg-gray-200 text-gray-900" value={formData.sequence_type} onChange={handleChange}>
+          <option value={"0"}>DNA</option>
+          <option value={"1"}>Peptide</option>
         </select>
       </label>
 

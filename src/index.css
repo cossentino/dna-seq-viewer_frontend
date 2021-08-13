@@ -11,3 +11,11 @@
     min-width: 50vw;
   }
 }
+
+a.link {
+   @apply underline text-blue-600 hover:text-blue-800
+}
+
+a.link:visited {
+  @apply underline text-purple-600 hover:text-blue-800
+}

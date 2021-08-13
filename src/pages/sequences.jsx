@@ -32,7 +32,7 @@ export default function SequencesPage() {
                     {sequences.map(s => (
                       <tr key={s.id}>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <Link to={`/sequences/${s.id}`}>
+                          <Link className="link" to={`/sequences/${s.id}`}>
                             <div className="text-sm text-gray-900">{s.name}</div>
                           </Link>
                         </td>
@@ -41,9 +41,6 @@ export default function SequencesPage() {
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="text-sm text-gray-900">{s.fasta_header}</div>
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
-                          <div className="text-sm text-gray-900">{generateSequence(s.raw_sequence)}</div>
                         </td>
                       </tr>))}
                   </tbody>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { generateSequence } from '../services/sequence_format'
 import Loading from './Loading'
 
 
@@ -6,11 +7,9 @@ import Loading from './Loading'
 const Sequence = ({ sequence }) => {
 
 
-  return !sequence ? null : (
-    <div>
-      This is a sequence with id of {sequence.id}.
-      Name: {sequence.name}
-      Created at: {sequence.created_at}
+  return (
+    <div className="container w-4/6 h-4/6">
+      {generateSequence(sequence.raw_sequence, false)}
     </div>
   )
 

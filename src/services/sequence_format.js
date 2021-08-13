@@ -17,13 +17,13 @@ export const generateComplementaryBase = (baseChar) => {
   return <Base color={baseColors[complementMapper[baseChar]]} code={complementMapper[baseChar]} />
 }
 
-export const generateSequence = (strSeq) => {
+export const generateSequence = (strSeq, dna = true) => {
   return (
-    <div className="inline-flex">
+    <div className="flex flex-wrap max-h-full">
       {Array.prototype.map.call(strSeq, (c, i) => {
         return (
           <div className="float-right" key={i}>
-            {generateBase(c)}
+            {dna ? generateBase(c) : generateResidue(c)}
           </div>
         )
       })}
