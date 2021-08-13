@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import Cookies from 'js-cookie'
 
 export default async function getSequence(id = 0) {
   const data = await fetch('http://127.0.0.1:8000/test')
@@ -13,7 +14,8 @@ export function useSequences() {
   // Fetch sequences from API and save them in state
   useEffect(() => {
     async function getSequences() {
-      const response = await fetch('http://localhost:8000/sequences').then(resp => resp.json())
+      const cookie = Cookies.get('token')
+      const response = await fetch('http://localhost:8000/sequences', { headers: { 'Token': cookie, 'Authorization': `Token ${cookie}` } }).then(resp => resp.json())
       setSequences(response.data)
     }
     getSequences()

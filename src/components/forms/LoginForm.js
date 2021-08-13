@@ -27,8 +27,7 @@ const LoginForm = () => {
       .catch(error => console.log(error))
   }
 
-  // return responded ? <Redirect to="/" /> : (
-  return (
+  return responded ? <Redirect to="/" /> : (
     <form onSubmit={e => handleSubmit(e)} className="p-6 flex flex-col justify-evenly">
 
       <div>
