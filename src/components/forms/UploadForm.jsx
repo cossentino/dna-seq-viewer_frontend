@@ -5,15 +5,11 @@ import Cookies from 'js-cookie'
 const UploadForm = () => {
 
   const myFileInput = useRef()
-  const [formData, setFormData] = useState({ sequence: { description: "", name: "", raw_sequence: "" }, sequence_type: "0" })
+  const [formData, setFormData] = useState({ description: "", name: "", sequence_type: "", input_file_format: "" })
 
   const handleChange = e => {
     const { name, value } = e.target
-    if (formData[name]) {
-      setFormData({ ...formData, [name]: value })
-    } else {
-      setFormData({ ...formData, sequence: { ...formData.sequence, [name]: value } })
-    }
+    setFormData({ ...formData, [name]: value })
   }
 
   const handleFileUpload = e => {
@@ -49,16 +45,29 @@ const UploadForm = () => {
       </label>
       <input type="text" name="description" value={formData.description} onChange={handleChange} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded my-2 py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" />
 
-      <label className="text-white">
-        DNA or Peptide?<br />
-        <select name="sequence_type" className="bg-gray-200 text-gray-900" value={formData.sequence_type} onChange={handleChange}>
-          <option value={"0"}>DNA</option>
-          <option value={"1"}>Peptide</option>
-        </select>
-      </label>
+      <div className="flex justify-center items-center text-white" onChange={handleChange}>
+        <input type="radio" name="sequence_type" className="mx-1 bg-gray-200" value="dna">
+        </input>
+        <label className="mx-1">DNA</label>
+        <input type="radio" name="sequence_type" className="mx-1 bg-gray-200" value="rna">
+        </input>
+        <label className="mx-1">RNA</label>
+        <input type="radio" name="sequence_type" className="mx-1 bg-gray-200" value="peptide">
+        </input>
+        <label className="mx-1">Peptide</label>
+      </div>
+
+      <div className="flex justify-center items-center text-white" onChange={handleChange}>
+        <input type="radio" name="input_file_format" className="mx-1 bg-gray-200" value="fasta">
+        </input>
+        <label className="mx-1">FASTA</label>
+        <input type="radio" name="input_file_format" className="mx-1 bg-gray-200" value="genbank">
+        </input>
+        <label className="mx-1">GenBank</label>
+      </div>
 
       <label className="block tracking-wide text-white text-sm mt-2">
-        Upload FASTA file:
+        Upload file:
       </label>
       <input type="file" ref={myFileInput} onChange={handleFileUpload} size="400" className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded my-2 py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" />
 

@@ -19,10 +19,10 @@ export const generateComplementaryBase = (baseChar) => {
 
 export const generateSequence = (strSeq, dna = true) => {
   return (
-    <div className="flex flex-wrap max-h-full">
+    <div className="flex flex-wrap">
       {Array.prototype.map.call(strSeq, (c, i) => {
         return (
-          <div className="float-right" key={i}>
+          <div style={{ flexBasis: '25px' }} className="pb-2  " key={i}>
             {dna ? generateBase(c) : generateResidue(c)}
           </div>
         )

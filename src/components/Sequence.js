@@ -9,7 +9,7 @@ const Sequence = ({ sequence }) => {
 
   return (
     <div className="container w-4/6 h-4/6">
-      {generateSequence(sequence.raw_sequence, false)}
+      {generateSequence(sequence, true)}
     </div>
   )
 
