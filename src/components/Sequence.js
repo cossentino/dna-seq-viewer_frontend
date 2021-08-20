@@ -4,12 +4,13 @@ import Loading from './Loading'
 
 
 
-const Sequence = ({ sequence }) => {
+const Sequence = ({ sequence, seq_type }) => {
 
+  const is_dna = (seq_type === 'dna') ? true : false
 
   return (
     <div className="container w-4/6 h-4/6">
-      {generateSequence(sequence, true)}
+      {generateSequence(sequence, is_dna)}
     </div>
   )
 

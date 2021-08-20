@@ -30,7 +30,7 @@ const SequencePage = () => {
           <AnnotationsTable annotations={annotations} />
         </div>
         <div className="flex justify-center my-10">
-          <Sequence sequence={main.seq.slice(0, 101)} />
+          <Sequence sequence={main.seq.slice(0, 101)} seq_type={main.seq.seq_type} />
         </div>
       </div>
     </div>
