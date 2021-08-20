@@ -1,8 +1,8 @@
 import React from 'react'
-import Base from '../images/bases/base'
+import Base from '../images/base'
 import { residueColors, baseColors } from '../constants/colors'
 
-const complementMapper = { "A": "T", "T": "A", "C": "G", "G": "C" }
+const complementMap = { "A": "T", "T": "A", "C": "G", "G": "C" }
 
 
 export const generateBase = (baseChar) => {
@@ -14,7 +14,7 @@ export const generateResidue = (AACode) => {
 }
 
 export const generateComplementaryBase = (baseChar) => {
-  return <Base color={baseColors[complementMapper[baseChar]]} code={complementMapper[baseChar]} />
+  return <Base color={baseColors[complementMap[baseChar]]} code={complementMap[baseChar]} />
 }
 
 export const generateSequence = (strSeq, dna = true) => {

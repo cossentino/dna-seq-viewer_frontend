@@ -11,9 +11,6 @@ const Base = ({ color, code }) => {
 					fill: color, stroke:
 						'#000000', strokeWidth: '.25px'
 				}} width="5" height="15" />
-				{/* <g id="Layer_2_2_">
-					<rect y="428" style={{ fill: '#6D6E71' }} width="500" height="72" />
-				</g> */}
 			</svg>
 		</Tooltip>
 	)

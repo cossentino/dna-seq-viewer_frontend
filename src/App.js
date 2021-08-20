@@ -7,7 +7,6 @@ import Login from './pages/login'
 import { Route, Switch } from 'react-router-dom'
 import SequencesPage from './pages/sequences';
 import SequencePage from './pages/sequence';
-import Base from './images/bases/base';
 
 function App() {
 
@@ -17,9 +16,6 @@ function App() {
   return (
     <div className="App container mx-auto">
       <Switch>
-        <Route path="/about">
-          <Base color={'#E96C6C'} />
-        </Route>
         <Route path="/sequences/:sequenceId">
           <SequencePage />
         </Route>

@@ -1,0 +1,5 @@
+const hydrophobic = ('A', 'I', 'L', 'M', 'V')
+const aromatic = ('P', 'W', 'Y')
+const polarNeutral = ('N', 'C', 'Q', 'S', 'T')
+const acidic = ('D', 'E')
+const basic = ('R', 'H', 'K')

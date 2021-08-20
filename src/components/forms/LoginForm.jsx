@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
-import { LOGIN_URL } from '../../services/forms'
+import { LOGIN_URL } from '../../services/api/api_requests'
 import { Redirect } from 'react-router-dom'
 import Cookies from 'js-cookie'
-
 
 const LoginForm = () => {
 
