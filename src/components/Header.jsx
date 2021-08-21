@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import * as ROUTES from '../constants/routes'
+import useAuthListener from '../context/use-auth-listener';
+import UserContext from '../context/user';
 
 export default function Header() {
+  const user = useAuthListener();
   return (
     <header className="h-16 bg-white border-b border-gray-primary mb-8">
       <div className="container mx-auto max-w-screen-lg h-full">
@@ -17,6 +20,7 @@ export default function Header() {
             </h1>
           </div>
           <div className="text-gray-700 text-center flex items-center align-middle">
+            <div className="bg-blue-500 text-white text-sm font-bold py-2 px-4 border border-blue-700 rounded">{user}</div>
             <Link
               to={ROUTES.HOMEPAGE}
               aria-label="Dashboard"

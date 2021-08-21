@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { LOGIN_URL } from '../../services/api/api_requests'
 import { Redirect } from 'react-router-dom'
 import Cookies from 'js-cookie'
+import UserContext from '../../context/user'
 
 const LoginForm = () => {
 
   const [formData, setFormData] = useState({ user: { email: "", password: "" } })
-  const [responded, setResponded] = useState(false)
+  const { user, setUser } = useContext(UserContext)
 
   const handleChange = e => {
     const { name, value } = e.target
@@ -21,12 +22,14 @@ const LoginForm = () => {
       body: JSON.stringify(formData),
     }).then((resp) => resp.json())
       .then(json => {
-        Cookies.set('token', json['user']['token'], { samesite: "strict" })
-      }).then(() => setResponded(true))
-      .catch(error => console.log(error))
+        console.log(json)
+        Cookies.set('token', json['user']['token'], { sameSite: "strict" })
+        Cookies.set('email', formData.user.email, { sameSite: "strict" })
+        setUser(formData.user.email)
+      }).catch(error => console.log(error))
   }
 
-  return responded ? <Redirect to="/" /> : (
+  return user ? <Redirect to="/" /> : (
     <form onSubmit={e => handleSubmit(e)} className="p-6 flex flex-col justify-evenly">
 
       <div>
