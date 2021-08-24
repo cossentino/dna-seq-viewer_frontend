@@ -11,26 +11,17 @@ export const generateBase = (baseChar) => {
 }
 
 export const generateResidue = (AACode, filter = null) => {
+  let color
   if (!filter) {
-    return <Base color={residueColors[AACode]} code={AACode} />
+    color = residueColors[AACode]
   } else {
-    if (residueCategories[filter]) {
-      debugger
-      if (residueCategories[filter].includes(AACode)) {
-        const color = categoryColors.selected
-        return <Base color={color} code={AACode} />
-      } else {
-        return <Base color={categoryColors.unselected} code={AACode} />
-      }
+    if ((residueCategories[filter] && residueCategories[filter].includes(AACode)) || filter === AACode) {
+      color = categoryColors.selected
     } else {
-      if (filter === AACode) {
-        const color = categoryColors.selected
-        return <Base color={color} code={AACode} />
-      } else {
-        return <Base color={categoryColors.unselected} code={AACode} />
-      }
+      color = categoryColors.unselected
     }
   }
+  return <Base color={color} code={AACode} />
 }
 
 export const generateComplementaryBase = (baseChar) => {
