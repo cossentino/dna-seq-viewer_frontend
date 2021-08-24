@@ -28,3 +28,8 @@ export const baseColors = {
   'G': '#5CE090',
   'N': 'B6B6B6'
 }
+
+export const categoryColors = {
+  'selected': '#E96C6C',
+  'unselected': '#6878EA'
+}

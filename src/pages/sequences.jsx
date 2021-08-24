@@ -2,7 +2,6 @@ import React from 'react'
 import Header from '../components/Header'
 import { useSequences } from '../services/api/api_requests'
 import { Link } from 'react-router-dom'
-import { generateSequence } from '../services/sequence_format'
 
 export default function SequencesPage() {
   const sequences = useSequences()

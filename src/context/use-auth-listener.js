@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import { useEffect, useContext } from 'react'
 import Cookies from 'js-cookie'
 import UserContext from '../context/user'
 

@@ -4,12 +4,18 @@ import Header from '../components/Header'
 import Sequence from '../components/Sequence'
 import AnnotationsTable from '../components/tables/AnnotationsTable'
 import { useSequence } from '../services/api/api_requests'
+import CategoryFilter from '../components/filters/category-filter'
 
 
 const SequencePage = () => {
 
   const sequenceId = useParams().sequenceId
+  const [category, setCategory] = useState(null)
   const [main, annotations] = useSequence(sequenceId)
+
+  const handleCategorySelect = (e) => {
+    setCategory(e.target.value)
+  }
 
   return !main || !annotations ? null : (
     <div className="flex flex-col">
@@ -19,6 +25,7 @@ const SequencePage = () => {
           <h2 className="text-5xl font-bold text-blue-900">{main.name}</h2>
         </div>
         <div className="flex flex-col mx-auto float-right border-blue-900 border-4 rounded-sm">
+          <CategoryFilter onChange={handleCategorySelect} category={category} />
           <ul className="">
             <li className="p-2 flex justify-between"><span className="font-bold mx-1">Created at: </span><span>{main.created_at}</span></li>
             <li className="p-2 flex justify-between"><span className="font-bold mx-1">Description: </span><span>{main.description}</span></li>
@@ -30,7 +37,7 @@ const SequencePage = () => {
           <AnnotationsTable annotations={annotations} />
         </div>
         <div className="flex justify-center my-10">
-          <Sequence sequence={main.seq.slice(0, 101)} seq_type={main.seq_type} />
+          <Sequence sequence={main.seq.slice(0, 101)} seq_type={main.seq_type} category={category} />
         </div>
       </div>
     </div>
