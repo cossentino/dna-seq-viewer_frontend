@@ -40,3 +40,21 @@ export function useSequence(id) {
   }, [])
   return [main, annotations]
 }
+
+export function useAnalysis(id, analysis) {
+  const [response, setResponse] = useState(null)
+
+  // Fetch sequences from API and save them in state
+  useEffect(() => {
+    async function getSequence() {
+      const cookie = Cookies.get('token')
+      const response = await fetch(`http://localhost:8000/sequences/${id}?analysis=True`, { headers: { 'Authorization': `Token ${cookie}` } }).then(resp => resp.json())
+      setResponse(response.data)
+    }
+    if (analysis) {
+      getSequence()
+    }
+    // As of right now, there are no dependencies on which use effect should fire again
+  }, [analysis])
+  return response
+}

@@ -3,7 +3,8 @@ import { useParams } from 'react-router'
 import Header from '../components/Header'
 import Sequence from '../components/Sequence'
 import AnnotationsTable from '../components/tables/AnnotationsTable'
-import { useSequence } from '../services/api/api_requests'
+import AnalysisTable from '../components/tables/AnalysisTable'
+import { useSequence, useAnalysis } from '../services/api/api_requests'
 import { CategoryFilter, AACodeFilter } from '../components/filters/peptideColorFilters'
 
 
@@ -11,12 +12,18 @@ const SequencePage = () => {
 
   const sequenceId = useParams().sequenceId
   const [category, setCategory] = useState(null)
+  const [rawSequence, setRawSequence] = useState(false)
+  const [analysis, setAnalysis] = useState(false)
   const [main, annotations] = useSequence(sequenceId)
+
+  const analysisTable = useAnalysis(sequenceId, analysis)
+
 
 
   return !main || !annotations ? null : (
     <div className="flex flex-col">
       <Header />
+      <div>test test {analysisTable ? <AnalysisTable analysisObject={analysisTable} /> : null}</div>
       <div className="flex">
         <h2 className="text-5xl font-bold text-blue-900 w-1/2">{main.name}</h2>
         <div className="flex flex-col mx-auto float-right border-blue-900 border-4 rounded-sm">
@@ -34,9 +41,11 @@ const SequencePage = () => {
               <CategoryFilter onChange={(e) => setCategory(e.target.value)} category={category} />
               <AACodeFilter onChange={(e) => setCategory(e.target.value)} category={category} />
               <button className="mx-auto my-4 w-1/2 bg-blue-400 hover:bg-blue-900 text-white text-sm rounded h-12" onClick={() => setCategory(null)}>Clear Filter</button>
+              <button className="mx-auto my-4 w-1/2 bg-blue-400 hover:bg-blue-900 text-white text-sm rounded h-12" onClick={() => setRawSequence(!rawSequence)}>Toggle Raw View</button>
+              <button className="mx-auto my-4 w-1/2 bg-blue-400 hover:bg-blue-900 text-white text-sm rounded h-12" onClick={() => setAnalysis(!analysis)}>Get Analysis</button>
             </div>
           )}
-          <Sequence sequence={main.seq.slice(0, 101)} seq_type={main.seq_type} category={category} />
+          <Sequence sequence={main.seq.slice(0, 101)} seq_type={main.seq_type} category={category} raw={rawSequence} />
         </div>
       </div>
     </div >
