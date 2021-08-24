@@ -6,11 +6,11 @@ import { residueCategories } from '../constants/residue-categories'
 const complementMap = { "A": "T", "T": "A", "C": "G", "G": "C" }
 
 
-export const generateBase = (baseChar) => {
-  return <Base color={baseColors[baseChar]} code={baseChar} />
+export const generateBase = (baseChar, idx) => {
+  return <Base color={baseColors[baseChar]} code={baseChar} idx={idx} />
 }
 
-export const generateResidue = (AACode, filter = null) => {
+export const generateResidue = (AACode, idx, filter = null) => {
   let color
   if (!filter) {
     color = residueColors[AACode]
@@ -21,7 +21,7 @@ export const generateResidue = (AACode, filter = null) => {
       color = categoryColors.unselected
     }
   }
-  return <Base color={color} code={AACode} />
+  return <Base color={color} code={AACode} idx={idx} />
 }
 
 export const generateComplementaryBase = (baseChar) => {
@@ -33,8 +33,8 @@ export const generateSequence = (strSeq, dna = true, filter = null) => {
     <div className="flex flex-wrap">
       {Array.prototype.map.call(strSeq, (c, i) => {
         return (
-          <div style={{ flexBasis: '25px' }} className="pb-2  " key={i}>
-            {dna ? generateBase(c) : generateResidue(c, filter)}
+          <div key={i} className="pb-6">
+            {dna ? generateBase(c, i) : generateResidue(c, i, filter)}
           </div>
         )
       })}

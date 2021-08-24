@@ -4,8 +4,7 @@ import Header from '../components/Header'
 import Sequence from '../components/Sequence'
 import AnnotationsTable from '../components/tables/AnnotationsTable'
 import { useSequence } from '../services/api/api_requests'
-import CategoryFilter from '../components/filters/category-filter'
-import AACodeFilter from '../components/filters/aa-code-filter'
+import { CategoryFilter, AACodeFilter } from '../components/filters/peptideColorFilters'
 
 
 const SequencePage = () => {
@@ -19,20 +18,16 @@ const SequencePage = () => {
     <div className="flex flex-col">
       <Header />
       <div className="flex">
-        <div className="w-1/2">
-          <h2 className="text-5xl font-bold text-blue-900">{main.name}</h2>
-        </div>
+        <h2 className="text-5xl font-bold text-blue-900 w-1/2">{main.name}</h2>
         <div className="flex flex-col mx-auto float-right border-blue-900 border-4 rounded-sm">
-          <ul className="">
-            <li className="p-2 flex justify-between"><span className="font-bold mx-1">Created at: </span><span>{main.created_at}</span></li>
-            <li className="p-2 flex justify-between"><span className="font-bold mx-1">Description: </span><span>{main.description}</span></li>
+          <ul className="p-2 flex flex-col justify-between mx-1">
+            <li><strong>Created at: </strong><span>{main.created_at}</span></li>
+            <li><strong>Description: </strong><span>{main.description}</span></li>
           </ul>
         </div>
       </div>
       <div className="flex">
-        <div>
-          <AnnotationsTable annotations={annotations} />
-        </div>
+        <AnnotationsTable annotations={annotations} />
         <div className="flex flex-col justify-center my-10 mx-4">
           {main.seq_type === 'dna' ? null : (
             <div className="m-4 w-1/4 flex flex-col">
@@ -44,7 +39,7 @@ const SequencePage = () => {
           <Sequence sequence={main.seq.slice(0, 101)} seq_type={main.seq_type} category={category} />
         </div>
       </div>
-    </div>
+    </div >
   )
 }
 

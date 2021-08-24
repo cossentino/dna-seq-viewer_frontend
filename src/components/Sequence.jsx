@@ -7,7 +7,7 @@ const Sequence = ({ sequence, seq_type, category }) => {
   const is_dna = (seq_type === 'dna') ? true : false
 
   return (
-    <div className="container w-4/6 h-4/6">
+    <div className="w-11/12 flex">
       {generateSequence(sequence, is_dna, category)}
     </div>
   )
