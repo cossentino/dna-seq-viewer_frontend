@@ -7,8 +7,8 @@ const Sequence = ({ sequence, seq_type, category, raw }) => {
   const is_dna = (seq_type === 'dna') ? true : false
 
   return raw ? (
-    <div className="w-11/12 flex">
-      {sequence}
+    <div className="w-11/12 flex justify-center mt-6">
+      <p className="break-words max-w-prose">{sequence}</p>
     </div>
   ) : (
     <div className="w-11/12 flex">
