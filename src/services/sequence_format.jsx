@@ -14,11 +14,21 @@ export const generateResidue = (AACode, filter = null) => {
   if (!filter) {
     return <Base color={residueColors[AACode]} code={AACode} />
   } else {
-    if (filter === AACode || residueCategories[filter].includes(AACode)) {
-      const color = categoryColors.selected
-      return <Base color={color} code={AACode} />
+    if (residueCategories[filter]) {
+      debugger
+      if (residueCategories[filter].includes(AACode)) {
+        const color = categoryColors.selected
+        return <Base color={color} code={AACode} />
+      } else {
+        return <Base color={categoryColors.unselected} code={AACode} />
+      }
     } else {
-      return <Base color={categoryColors.unselected} code={AACode} />
+      if (filter === AACode) {
+        const color = categoryColors.selected
+        return <Base color={color} code={AACode} />
+      } else {
+        return <Base color={categoryColors.unselected} code={AACode} />
+      }
     }
   }
 }

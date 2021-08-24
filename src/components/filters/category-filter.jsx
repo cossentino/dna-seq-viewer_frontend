@@ -3,14 +3,14 @@ import React from 'react'
 const CategoryFilter = ({ category, onChange }) => {
 
     return (
-        <form className="p-6 flex flex-col justify-evenly">
+        <form>
 
-            <div>
-                <label className="text-white text-lg">
-                    Email
+            <div className="flex flex-col justify-evenly">
+                <label className="text-lg mx-1">
+                    Highlight By Category
                 </label>
 
-                <select value={category} onChange={onChange}>
+                <select className="mx-1" value={category} onChange={onChange}>
                     <option value={null}></option>
                     <option value="hydrophobic">Hydrophobic</option>
                     <option value="polar">Polar</option>
@@ -18,7 +18,6 @@ const CategoryFilter = ({ category, onChange }) => {
                 </select>
             </div>
 
-            <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold my-2 py-2 px-4 rounded">Submit</button>
         </form>
     )
 }

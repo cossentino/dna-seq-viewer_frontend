@@ -5,6 +5,7 @@ import Sequence from '../components/Sequence'
 import AnnotationsTable from '../components/tables/AnnotationsTable'
 import { useSequence } from '../services/api/api_requests'
 import CategoryFilter from '../components/filters/category-filter'
+import AACodeFilter from '../components/filters/aa-code-filter'
 
 
 const SequencePage = () => {
@@ -25,7 +26,6 @@ const SequencePage = () => {
           <h2 className="text-5xl font-bold text-blue-900">{main.name}</h2>
         </div>
         <div className="flex flex-col mx-auto float-right border-blue-900 border-4 rounded-sm">
-          <CategoryFilter onChange={handleCategorySelect} category={category} />
           <ul className="">
             <li className="p-2 flex justify-between"><span className="font-bold mx-1">Created at: </span><span>{main.created_at}</span></li>
             <li className="p-2 flex justify-between"><span className="font-bold mx-1">Description: </span><span>{main.description}</span></li>
@@ -36,7 +36,13 @@ const SequencePage = () => {
         <div>
           <AnnotationsTable annotations={annotations} />
         </div>
-        <div className="flex justify-center my-10">
+        <div className="flex flex-col justify-center my-10 mx-4">
+          <div className="m-4 w-1/4 flex flex-col justify-items-end">
+            <CategoryFilter onChange={handleCategorySelect} category={category} />
+          </div>
+          <div className="m-4 w-1/4 flex flex-col justify-items-end">
+            <AACodeFilter onChange={handleCategorySelect} category={category} />
+          </div>
           <Sequence sequence={main.seq.slice(0, 101)} seq_type={main.seq_type} category={category} />
         </div>
       </div>
