@@ -6,12 +6,13 @@ export const CategoryFilter = ({ category, onChange }) => {
         <form>
 
             <div className="flex flex-col justify-evenly">
-                <label className="text-lg mx-1">
+                <label className="text-md m-1">
                     Highlight By Category
                 </label>
 
                 <select className="mx-1" value={category} onChange={onChange}>
-                    <option value={null}></option>
+                    {/* <option value={null}></option> */}
+                    <option value=""></option>
                     <option value="hydrophobic">Hydrophobic</option>
                     <option value="polar">Polar</option>
                     <option value="charged">Charged</option>
@@ -28,7 +29,7 @@ export const AACodeFilter = ({ category, onChange }) => {
         <form>
 
             <div className="flex flex-col justify-evenly">
-                <label className="text-lg mx-1">
+                <label className="text-md m-1">
                     Highlight by Residue Code
                 </label>
 

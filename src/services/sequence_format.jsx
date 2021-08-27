@@ -28,12 +28,13 @@ export const generateComplementaryBase = (baseChar) => {
   return <Base color={baseColors[complementMap[baseChar]]} code={complementMap[baseChar]} />
 }
 
-export const generateSequence = (strSeq, dna = true, filter = null) => {
+// Seq type 'dna' or 'peptide'
+export const generateSequence = (strSeq, seq_type, filter = null) => {
   return (
     <div className="m-4 flex flex-wrap">
       {Array.prototype.map.call(strSeq, (c, i) => {
         return (
-          dna ? generateBase(c, i) : generateResidue(c, i, filter)
+          seq_type === 'dna' ? generateBase(c, i) : generateResidue(c, i, filter)
         )
       })}
     </div>

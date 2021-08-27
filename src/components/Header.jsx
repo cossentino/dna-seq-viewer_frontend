@@ -13,7 +13,7 @@ export default function Header() {
             <h1 className="flex justify-center w-full">
               <Link to={ROUTES.HOMEPAGE}>
                 <span style={{ fontSize: '20px', fontFamily: 'Roboto Condensed, sans-serif' }}>
-                  DNA Sequence Visualization Tools
+                  Sequence Visualization Tools
                 </span>
               </Link>
             </h1>
