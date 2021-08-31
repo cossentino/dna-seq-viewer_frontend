@@ -1,6 +1,28 @@
 import React from 'react'
 import { residueCategories } from '../../constants/residue-categories'
 
+
+
+// Choices must have id (for value) and content (for display)
+export const GenericFilter = ({ category, onChange, choices, label }) => {
+    return (
+        <form>
+
+            <div className="flex flex-col justify-evenly">
+                <label className="text-md m-1">
+                    {label}
+                </label>
+                <select className="mx-1" value={category} onChange={onChange}>
+                    {Object.keys(choices).map((choice) => (
+                        <option value={choices[choice].id} key={choices[choice].id}>{choices[choice].content}</option>
+                    ))}
+                </select>
+            </div>
+
+        </form>
+    )
+}
+
 export const CategoryFilter = ({ category, onChange }) => {
 
     return (
