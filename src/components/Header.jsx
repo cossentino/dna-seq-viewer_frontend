@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import * as ROUTES from '../constants/routes'
 import useAuthListener from '../context/use-auth-listener';
 
 export default function Header() {
@@ -11,7 +10,7 @@ export default function Header() {
         <div className="flex justify-between h-full">
           <div className="text-gray-700 text-center flex items-center align-middle cursor-pointer">
             <h1 className="flex justify-center w-full">
-              <Link to={ROUTES.HOMEPAGE}>
+              <Link to="/">
                 <span style={{ fontSize: '20px', fontFamily: 'Roboto Condensed, sans-serif' }}>
                   Sequence Visualization Tools
                 </span>
@@ -21,7 +20,7 @@ export default function Header() {
           <div className="text-gray-700 text-center flex items-center align-middle">
             <div className="bg-blue-500 text-white text-sm font-bold py-2 px-4 border border-blue-700 rounded">{user}</div>
             <Link
-              to={ROUTES.HOMEPAGE}
+              to="/"
               aria-label="Dashboard"
               className="h-6/12 mx-auto px-2 align-middle black-light"
             >

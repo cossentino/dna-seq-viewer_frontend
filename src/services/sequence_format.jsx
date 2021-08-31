@@ -7,7 +7,7 @@ const complementMap = { "A": "T", "T": "A", "C": "G", "G": "C" }
 
 
 export const generateBase = (baseChar, idx) => {
-  return <Base color={baseColors[baseChar]} code={baseChar} idx={idx} />
+  return <Base color={baseColors[baseChar]} code={baseChar} key={idx} idx={idx} />
 }
 
 export const generateResidue = (AACode, idx, filter = null) => {
@@ -21,7 +21,7 @@ export const generateResidue = (AACode, idx, filter = null) => {
       color = categoryColors.unselected
     }
   }
-  return <Base color={color} code={AACode} idx={idx} />
+  return <Base color={color} code={AACode} idx={idx} key={idx} />
 }
 
 export const generateComplementaryBase = (baseChar) => {

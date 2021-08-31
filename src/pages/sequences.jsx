@@ -16,13 +16,13 @@ export default function SequencesPage() {
                 <table className="divide-y divide-gray-200">
                   <thead className="bg-gray-50">
                     <tr>
-                      <th scope="col" className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th scope="col" className="ic-th">
                         Name
                       </th>
-                      <th scope="col" className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th scope="col" className="ic-th">
                         Description
                       </th>
-                      <th scope="col" className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th scope="col" className="ic-th">
                         FASTA Header
                       </th>
                     </tr>
@@ -30,15 +30,15 @@ export default function SequencesPage() {
                   <tbody className="bg-white divide-y divide-gray-200">
                     {sequences.map(s => (
                       <tr key={s.id}>
-                        <td className="px-6 py-4 whitespace-nowrap">
+                        <td className="ic-td">
                           <Link className="link" to={`/sequences/${s.id}`}>
                             <div className="text-sm text-gray-900">{s.name}</div>
                           </Link>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
+                        <td className="ic-td">
                           <div className="text-sm text-gray-900">{s.description}</div>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
+                        <td className="ic-td">
                           <div className="text-sm text-gray-900">{s.fasta_header}</div>
                         </td>
                       </tr>))}

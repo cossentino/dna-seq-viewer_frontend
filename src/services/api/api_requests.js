@@ -26,6 +26,7 @@ export function useSequence(id) {
   // Initialize state to hold results from fetch call
   const [main, setMain] = useState(null)
   const [annotations, setAnnotations] = useState(null)
+  const [features, setFeatures] = useState(null)
 
   // Fetch sequences from API and save them in state
   useEffect(() => {
@@ -34,11 +35,12 @@ export function useSequence(id) {
       const response = await fetch(`http://localhost:8000/sequences/${id}`, { headers: { 'Authorization': `Token ${cookie}` } }).then(resp => resp.json())
       setMain(response.data.main)
       setAnnotations(response.data.annotations)
+      setFeatures(response.data.features)
     }
     getSequence()
     // As of right now, there are no dependencies on which use effect should fire again
   }, [])
-  return [main, annotations]
+  return [main, annotations, features]
 }
 
 export function useAnalysis(id, analysis) {
