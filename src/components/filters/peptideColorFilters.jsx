@@ -1,4 +1,27 @@
 import React from 'react'
+import { residueCategories } from '../../constants/residue-categories'
+
+
+
+// Choices must have id (for value) and content (for display)
+export const GenericFilter = ({ category, onChange, choices, label }) => {
+    return (
+        <form>
+
+            <div className="flex flex-col justify-evenly">
+                <label className="text-md m-1">
+                    {label}
+                </label>
+                <select className="mx-1" value={category} onChange={onChange}>
+                    {Object.keys(choices).map((choice) => (
+                        <option value={choices[choice].id} key={choices[choice].id}>{choices[choice].content}</option>
+                    ))}
+                </select>
+            </div>
+
+        </form>
+    )
+}
 
 export const CategoryFilter = ({ category, onChange }) => {
 
@@ -11,7 +34,6 @@ export const CategoryFilter = ({ category, onChange }) => {
                 </label>
 
                 <select className="mx-1" value={category} onChange={onChange}>
-                    {/* <option value={null}></option> */}
                     <option value=""></option>
                     <option value="hydrophobic">Hydrophobic</option>
                     <option value="polar">Polar</option>
@@ -34,27 +56,30 @@ export const AACodeFilter = ({ category, onChange }) => {
                 </label>
 
                 <select className="mx-1" value={category} onChange={onChange}>
-                    <option value={null}></option>
-                    <option value={'A'}>A</option>
-                    <option value={'G'}>G</option>
-                    <option value={'L'}>L</option>
-                    <option value={'S'}>S</option>
-                    <option value={'V'}>V</option>
-                    <option value={'T'}>T</option>
-                    <option value={'K'}>K</option>
-                    <option value={'D'}>D</option>
-                    <option value={'I'}>I</option>
-                    <option value={'N'}>N</option>
-                    <option value={'E'}>E</option>
-                    <option value={'P'}>P</option>
-                    <option value={'R'}>R</option>
-                    <option value={'F'}>F</option>
-                    <option value={'Q'}>Q</option>
-                    <option value={'Y'}>Y</option>
-                    <option value={'H'}>H</option>
-                    <option value={'C'}>C</option>
-                    <option value={'M'}>M</option>
-                    <option value={'W'}>W</option>
+                    {residueCategories.all.map(code => (
+                        <option value={code} key={code}>{code}</option>
+                    ))}
+                </select>
+            </div>
+
+        </form>
+    )
+}
+
+
+export const FeatureFilter = ({ category, features, onChange }) => {
+
+    return (
+        <form>
+
+            <div className="flex flex-col justify-evenly">
+                <label className="text-md m-1">
+                    Highlight by Residue Code
+                </label>
+                <select className="mx-1" value={category} onChange={onChange}>
+                    {Object.keys(features).map((feat) => (
+                        <option value={features[feat].id} key={features[feat].id}>{features[feat].note}</option>
+                    ))}
                 </select>
             </div>
 

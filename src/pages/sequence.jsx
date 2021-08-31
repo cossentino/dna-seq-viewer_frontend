@@ -5,33 +5,33 @@ import Sequence from '../components/Sequence'
 import AnnotationsTable from '../components/tables/AnnotationsTable'
 import AnalysisTable from '../components/tables/AnalysisTable'
 import { useSequence, useAnalysis } from '../services/api/api_requests'
-import { CategoryFilter, AACodeFilter } from '../components/filters/peptideColorFilters'
+import { CategoryFilter, AACodeFilter, FeatureFilter } from '../components/filters/peptideColorFilters'
 
 
 const SequencePage = () => {
 
   const sequenceId = useParams().sequenceId
-  const [category, setCategory] = useState(null)
-  const [rawSequence, setRawSequence] = useState(false)
+  const [category, setCategory] = useState("")
+  const [rawModeOn, setrawModeOn] = useState(false)
   const [analysis, setAnalysis] = useState(false)
-  const [main, annotations] = useSequence(sequenceId)
+  const [main, annotations, features] = useSequence(sequenceId)
 
   const analysisTable = useAnalysis(sequenceId, analysis)
 
 
 
-  return !main || !annotations ? null : (
+  return !main || !annotations || !features ? null : (
     <div className="flex flex-col">
       <Header />
       {/* Title */}
-      <h2 className="text-5xl font-bold text-blue-900 w-1/2 mb-4">{main.name}</h2>
+      <h2 className="ic-h2">{main.name}</h2>
       {/* Rest of page */}
       <div id="main" className="flex justify-evenly">
         <AnnotationsTable annotations={annotations} className="mr-auto" />
         {analysis && analysisTable ? (
           <AnalysisTable analysisObject={analysisTable} />
         ) : (
-          <Sequence sequence={main.seq} seq_type={main.seq_type} category={category} raw={rawSequence} />
+          <Sequence sequence={main.seq} seq_type={main.seq_type} category={category} raw={rawModeOn} features={features} />
         )}
         <div>
 
@@ -41,11 +41,12 @@ const SequencePage = () => {
                 <div className="m-1 bg-blue-900 rounded text-white p-2 flex flex-col">
                   <CategoryFilter onChange={(e) => setCategory(e.target.value)} category={category} />
                   <AACodeFilter onChange={(e) => setCategory(e.target.value)} category={category} />
-                  <button className="mx-auto my-4 w-1/2 bg-blue-400 hover:bg-blue-900 text-white text-sm rounded h-12" onClick={() => setCategory(null)}>Clear Filter</button>
+                  <FeatureFilter onChange={(e) => setCategory(`feature_${e.target.value}`)} category={category} features={features} />
+                  <button className="ic-button" onClick={() => setCategory(null)}>Clear Filter</button>
                 </div>)}
             </div>
-            <button className="mx-auto my-4 w-1/2 bg-blue-400 hover:bg-blue-900 text-white text-sm rounded h-12" onClick={() => setRawSequence(!rawSequence)}>Toggle Raw View</button>
-            <button className="mx-auto my-4 w-1/2 bg-blue-400 hover:bg-blue-900 text-white text-sm rounded h-12" onClick={() => setAnalysis(!analysis)}>Show Analysis</button>
+            <button className="ic-button" onClick={() => setrawModeOn(!rawModeOn)}>Toggle Raw View</button>
+            <button className="ic-button" onClick={() => setAnalysis(!analysis)}>Show Analysis</button>
           </div>
         </div>
       </div>

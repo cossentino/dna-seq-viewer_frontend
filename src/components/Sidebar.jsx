@@ -17,7 +17,7 @@ export default function Sidebar() {
         </button>
       </Link>
       <Link className="flex items-center align-middle justify-center" to="/sequences">
-        <button className=" flex flex-col justify-evenly bg-blue-500 hover:bg-blue-700 text-white text-sm font-bold p-2 m-4 w-4/5 rounded">
+        <button className="flex flex-col justify-evenly bg-blue-500 hover:bg-blue-700 text-white text-sm font-bold p-2 m-4 w-4/5 rounded">
           <div>
             <img className="w-4/5 inline-flex p-1" src={helix} alt="dnahelix" />
           </div>

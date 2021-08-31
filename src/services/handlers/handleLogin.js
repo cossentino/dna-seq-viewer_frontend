@@ -1,21 +1,18 @@
 import Cookies from "js-cookie"
-import React, { useContext } from "react"
+import { useContext } from "react"
 import { LOGIN_URL } from "../api/api_requests"
 import UserContext from '../../context/user'
 
 
-
-
 export default async function handleLogin(e, formData) {
   e.preventDefault()
-  const { user, setUser } = useContext(UserContext)
+  const { setUser } = useContext(UserContext)
   fetch(LOGIN_URL, {
     method: "POST",
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(formData),
   }).then((resp) => resp.json())
     .then(json => {
-      console.log(json)
       Cookies.set('token', json['user']['token'], { samesite: "strict" })
       Cookies.set('email', formData.user.email, { sameSite: 'strict' })
     }).then(() => setUser(formData.user.email))

@@ -22,7 +22,6 @@ const LoginForm = () => {
       body: JSON.stringify(formData),
     }).then((resp) => resp.json())
       .then(json => {
-        console.log(json)
         Cookies.set('token', json['user']['token'], { sameSite: "strict" })
         Cookies.set('email', formData.user.email, { sameSite: "strict" })
         setUser(formData.user.email)
@@ -46,7 +45,7 @@ const LoginForm = () => {
         <input type="password" name="password" value={formData.password} onChange={handleChange} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded my-2 py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" />
       </div>
 
-      <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold my-2 py-2 px-4 rounded">Submit</button>
+      <button type="submit" className="ic-button">Submit</button>
     </form>
   )
 }

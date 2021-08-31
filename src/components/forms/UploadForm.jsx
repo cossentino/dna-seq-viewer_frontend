@@ -19,14 +19,10 @@ const UploadForm = () => {
 
   const handleSubmit = async e => {
     e.preventDefault()
-    const csrftoken = Cookies.get('csrftoken')
-    const headers = new Headers()
-    headers.append('X-CSRFToken', csrftoken)
-    headers.append('Authorization', `Token ${Cookies.get('token')}`)
     fetch(ADD_SEQUENCE_URL, {
       method: "POST",
       body: JSON.stringify(formData),
-      headers: headers,
+      headers: { 'X-CSRFToken': Cookies.get('csrftoken'), 'Authorization': `Token ${Cookies.get('token')}` },
       credentials: 'include'
     })
       .catch(error => console.log(error))
@@ -38,12 +34,12 @@ const UploadForm = () => {
       <label className="text-white">
         Name
       </label>
-      <input name="name" type="text" value={formData.name} onChange={handleChange} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded my-2 py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" />
+      <input name="name" type="text" value={formData.name} onChange={handleChange} className="ic-textInput" />
 
       <label className="text-white">
         Short description
       </label>
-      <input type="text" name="description" value={formData.description} onChange={handleChange} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded my-2 py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" />
+      <input type="text" name="description" value={formData.description} onChange={handleChange} className="ic-textInput" />
 
       <div className="flex justify-center items-center text-white" onChange={handleChange}>
         <input type="radio" name="sequence_type" className="mx-1 bg-gray-200" value="dna">
@@ -69,9 +65,9 @@ const UploadForm = () => {
       <label className="block tracking-wide text-white text-sm mt-2">
         Upload file:
       </label>
-      <input type="file" ref={myFileInput} onChange={handleFileUpload} size="400" className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded my-2 py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" />
+      <input type="file" ref={myFileInput} onChange={handleFileUpload} size="400" className="ic-textInput" />
 
-      <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold my-2 py-2 px-4 rounded">Submit</button>
+      <button type="submit" className="ic-button">Submit</button>
     </form>
   )
 }
