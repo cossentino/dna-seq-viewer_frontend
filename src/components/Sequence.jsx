@@ -2,7 +2,7 @@ import React from 'react'
 import { generateSequence } from '../services/sequence_format'
 
 
-const Sequence = ({ sequence, seq_type, category, raw }) => {
+const Sequence = ({ sequence, seq_type, category, raw, features }) => {
 
 
   return (
@@ -10,7 +10,7 @@ const Sequence = ({ sequence, seq_type, category, raw }) => {
       {raw ? (
         <p className="break-words max-w-prose">{sequence}</p>
       ) : (
-        generateSequence(sequence, seq_type, category)
+        generateSequence(sequence, seq_type, category, features)
       )}
     </div>
   )

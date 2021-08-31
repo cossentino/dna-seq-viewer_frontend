@@ -31,7 +31,7 @@ const SequencePage = () => {
         {analysis && analysisTable ? (
           <AnalysisTable analysisObject={analysisTable} />
         ) : (
-          <Sequence sequence={main.seq} seq_type={main.seq_type} category={category} raw={rawModeOn} />
+          <Sequence sequence={main.seq} seq_type={main.seq_type} category={category} raw={rawModeOn} features={features} />
         )}
         <div>
 
@@ -41,7 +41,7 @@ const SequencePage = () => {
                 <div className="m-1 bg-blue-900 rounded text-white p-2 flex flex-col">
                   <CategoryFilter onChange={(e) => setCategory(e.target.value)} category={category} />
                   <AACodeFilter onChange={(e) => setCategory(e.target.value)} category={category} />
-                  <FeatureFilter onChange={(e) => setCategory(`feature_${e.target.value}`)} category={category} features={features} onChange={null} />
+                  <FeatureFilter onChange={(e) => setCategory(`feature_${e.target.value}`)} category={category} features={features} />
                   <button className="ic-button" onClick={() => setCategory(null)}>Clear Filter</button>
                 </div>)}
             </div>
