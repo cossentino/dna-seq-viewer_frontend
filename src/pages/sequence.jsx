@@ -18,7 +18,7 @@ const SequencePage = () => {
   const [analysis, setAnalysis] = useState(false)
   const [main, annotations, features] = useSequence(sequenceId)
 
-  const analysisTable = useAnalysis(sequenceId, analysis)
+  const analysisTable = useAnalysis(sequenceId)
 
 
 

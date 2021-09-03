@@ -43,7 +43,7 @@ export function useSequence(id) {
   return [main, annotations, features]
 }
 
-export function useAnalysis(id, analysis) {
+export function useAnalysis(id) {
   const [analysis, setAnalysis] = useState(null)
 
   // Fetch sequences from API and save them in state
