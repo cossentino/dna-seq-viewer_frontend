@@ -30,7 +30,7 @@ export const CategoryFilter = ({ category, onChange }) => {
 
             <div className="flex flex-col justify-evenly">
                 <label className="text-md m-1">
-                    Highlight By Category
+                    Highlight By Property
                 </label>
 
                 <select className="mx-1" value={category} onChange={onChange}>
@@ -74,11 +74,11 @@ export const FeatureFilter = ({ category, features, onChange }) => {
 
             <div className="flex flex-col justify-evenly">
                 <label className="text-md m-1">
-                    Highlight by Residue Code
+                    Highlight Feature
                 </label>
                 <select className="mx-1" value={category} onChange={onChange}>
                     {Object.keys(features).map((feat) => (
-                        <option value={features[feat].id} key={features[feat].id}>{features[feat].note}</option>
+                        <option value={features[feat].id} key={features[feat].id}>{features[feat].note ? features[feat].note : `Unnamed region at ${features[feat].start}-${features[feat].end}`}</option>
                     ))}
                 </select>
             </div>

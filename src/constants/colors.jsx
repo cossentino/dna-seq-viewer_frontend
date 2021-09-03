@@ -21,14 +21,6 @@ export const residueColors = {
   'W': '#4F4600'
 }
 
-export const baseColors = {
-  'A': '#E96C6C',
-  'T': '#6878EA',
-  'C': '#F3F995',
-  'G': '#5CE090',
-  'N': 'B6B6B6'
-}
-
 export const categoryColors = {
   'selected': '#E96C6C',
   'unselected': '#6878EA'

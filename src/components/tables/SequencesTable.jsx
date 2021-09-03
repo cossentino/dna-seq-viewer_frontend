@@ -20,9 +20,6 @@ export default function SequencesTable() {
                     <th scope="col" className="ic-th">
                       Description
                     </th>
-                    <th scope="col" className="ic-th">
-                      FASTA Header
-                    </th>
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
@@ -35,9 +32,6 @@ export default function SequencesTable() {
                       </td>
                       <td className="ic-td">
                         <div className="text-sm text-gray-900">{s.description}</div>
-                      </td>
-                      <td className="ic-td">
-                        <div className="text-sm text-gray-900">{s.fasta_header}</div>
                       </td>
                     </tr>))}
                 </tbody>

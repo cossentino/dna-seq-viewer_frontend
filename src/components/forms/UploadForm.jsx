@@ -1,11 +1,12 @@
 import React, { useState, useRef } from 'react'
 import { ADD_SEQUENCE_URL } from '../../services/api/api_requests'
 import Cookies from 'js-cookie'
+import { Redirect } from 'react-router-dom'
 
 const UploadForm = () => {
 
   const myFileInput = useRef()
-  const [formData, setFormData] = useState({ description: "", name: "", sequence_type: "", input_file_format: "" })
+  const [formData, setFormData] = useState({ description: "", name: "", sequence_type: "peptide", input_file_format: "" })
 
   const handleChange = e => {
     const { name, value } = e.target
@@ -24,6 +25,8 @@ const UploadForm = () => {
       body: JSON.stringify(formData),
       headers: { 'X-CSRFToken': Cookies.get('csrftoken'), 'Authorization': `Token ${Cookies.get('token')}` },
       credentials: 'include'
+    }).then(() => {
+      window.location.href = "/"
     })
       .catch(error => console.log(error))
   }
@@ -40,18 +43,6 @@ const UploadForm = () => {
         Short description
       </label>
       <input type="text" name="description" value={formData.description} onChange={handleChange} className="ic-textInput" />
-
-      <div className="flex justify-center items-center text-white" onChange={handleChange}>
-        <input type="radio" name="sequence_type" className="mx-1 bg-gray-200" value="dna">
-        </input>
-        <label className="mx-1">DNA</label>
-        <input type="radio" name="sequence_type" className="mx-1 bg-gray-200" value="rna">
-        </input>
-        <label className="mx-1">RNA</label>
-        <input type="radio" name="sequence_type" className="mx-1 bg-gray-200" value="peptide">
-        </input>
-        <label className="mx-1">Peptide</label>
-      </div>
 
       <div className="flex justify-center items-center text-white" onChange={handleChange}>
         <input type="radio" name="input_file_format" className="mx-1 bg-gray-200" value="fasta">
