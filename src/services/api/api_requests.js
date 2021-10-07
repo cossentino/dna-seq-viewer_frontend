@@ -55,6 +55,6 @@ export function useAnalysis(id) {
     }
     getAnalysis()
     // As of right now, there are no dependencies on which use effect should fire again
-  }, [analysis])
+  }, [])
   return analysis
 }
